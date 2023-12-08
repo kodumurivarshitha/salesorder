@@ -1,0 +1,70 @@
+<mvc:View controllerName="com.ibm.salesapp.controller.SmartControl"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    	xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:f="sap.f"
+    xmlns="sap.m">
+
+<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+			<!-- DynamicPage Title -->
+			<f:title>
+				<f:DynamicPageTitle>
+					<f:heading>
+						<Title text="Sales Order"/>
+					</f:heading>
+					
+					<f:expandedContent>
+						<Label text="Details"/>
+					</f:expandedContent>
+					<f:snappedContent>
+						<Label text="Details"/>
+					</f:snappedContent>
+					<f:snappedTitleOnMobile>
+						<Title text="Details"/>
+					</f:snappedTitleOnMobile>
+					
+				
+				
+				</f:DynamicPageTitle>
+			</f:title>
+
+            <f:header>
+				<f:DynamicPageHeader pinnable="true">
+
+					<smartFilterBar:SmartFilterBar id="smartFilterBar" entitySet="Salesorders" persistencyKey="SmartFilter_Explored" basicSearchFieldName="Bukrs" enableBasicSearch="true" >
+				<smartFilterBar:controlConfiguration>
+					<smartFilterBar:ControlConfiguration key="soNumber" visibleInAdvancedArea="true">
+					
+					</smartFilterBar:ControlConfiguration>
+					
+				</smartFilterBar:controlConfiguration>
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+				<smartFilterBar:layoutData>
+					<FlexItemData shrinkFactor="0"/>
+				</smartFilterBar:layoutData>
+			</smartFilterBar:SmartFilterBar>
+
+				</f:DynamicPageHeader>
+			</f:header>
+			
+			<f:content>
+						<smartTable:SmartTable header="Sales Order" initiallyVisibleFields="soNumber,customerName,inquiryNumber,orderDate,totalOrderItems,createdBy" id="LineItemsSmartTable" entitySet="Salesorders" smartFilterId="smartFilterBar" tableType="Table" useExportToExcel="true" beforeExport="onBeforeExport" useVariantManagement="true" useTablePersonalisation="true" showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true" class="sapUiResponsiveContentPadding" enableAutoColumnWidth="true" editTogglable="true" app:useSmartToggle="true">
+				<!-- layout data used to make the table growing but the filter bar fixed -->
+				<smartTable:layoutData>
+					<FlexItemData growFactor="1" baseSize="0%"/>
+				</smartTable:layoutData>
+			</smartTable:SmartTable>
+			</f:content>
+
+			<!-- DynamicPage Footer -->
+			<f:footer>
+				
+			</f:footer>
+		</f:DynamicPage>
+
+
+
+</mvc:View>
