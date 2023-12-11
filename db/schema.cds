@@ -9,7 +9,7 @@ entity Salesorders : managed{
     @title : 'Order Date'
     orderDate : Date;
 
-    @title: 'Customer Name'
+    @title: 'Customer Nme'
     customerName : String;
 
     @title: 'Customer Number'
